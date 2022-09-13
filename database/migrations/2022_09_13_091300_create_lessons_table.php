@@ -14,9 +14,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('lessons', function (Blueprint $table) {
-            $table->id('lesson_id');
-            $table->foreignId('class_id')->references('class_id')->on('group');
-            $table->foreignId('teacher_id')->references('teacher_id')->on('teacher');
+            $table->foreignId('class_id')->references('class_id')->on('groups');
+            $table->foreignId('teacher_id')->references('teacher_id')->on('teachers');
+            $table->primary(['class_id', 'teacher_id']);
             $table->string('name');
             $table->timestamps();
         });
